@@ -1,0 +1,16 @@
+html {
+    background-image: linear-gradient(to bottom right,
+    purple, purple,
+    silver, 
+    black
+    );
+    height: 100%;
+    width: 100%;
+    
+}
+
+#headerOne {
+    text-align: center;
+
+    color: black;
+}
