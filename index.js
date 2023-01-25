@@ -10,7 +10,7 @@ populationDivision.innerHTML = "";
     fetch(finalURL)
     .then(response => response.json())
     .then(data => {
-      let populationData=data.population;
+    let populationData = data.categories.find(category => category.id === "CITY-SIZE").data.find(data => data.id === "POPULATION-SIZE").float_value;;
       populationDivision.innerHTML = populationData;
       document.body.appendChild(populationDivision);
       console.log(data)
