@@ -2,8 +2,8 @@
 
   let searchButton = document.getElementById("search");
   let cityInput = document.getElementById("city-input");
-  let populationDivision = document.createElement("div");
-  populationDivision.id = "population";
+  let populationContainer = document.getElementById("population-container")
+  populationContainer.innerHTML = populationData;
   searchButton.addEventListener("click", () => {
     let citySlug = cityInput.value.toLowerCase();
     let finalURL = `https://api.teleport.org/api/urban_areas/slug:${citySlug}/details`;
