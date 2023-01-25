@@ -51,7 +51,7 @@ html {
     color: black
 }
 
-#population-container {
+#populationContainer {
     position: absolute;
     bottom: 0; /* positions the element at the bottom of the page */
     width: 50%; /* gives the element a width of 50% of its parent element */
