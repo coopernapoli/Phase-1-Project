@@ -6,7 +6,7 @@
   let headerTwo = document.getElementById("headerTwo");
   let startupSalaryContainer = document.getElementById("startupSalaryContainer")
   populationContainer.style.display = "none";
-  startupSalaryContainer.style.display = "none";l
+  startupSalaryContainer.style.display = "none";
 
   let populationDivision = document.getElementById("populationDivision");
   let startupSalaryDivision = document.getElementById("startupSalaryDivision");
@@ -59,8 +59,9 @@
         
     .then(data => {
         
-         let startupSalaryData = data.categories.find(category => category.id === "CITY-SIZE")
-            .data.find(data => data.id === "POPULATION-SIZE").float_value;
+         let startupSalaryData = data.categories.find(category => category.id === "JOB-MARKET")
+            
+            .data.find(data => data.id === "STARTUP-SALARIES-DETAIL").currency_dollar_value;
 
             startupSalaryContainer.textContent = startupSalaryData;
             
