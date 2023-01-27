@@ -75,4 +75,36 @@
       console.error('Error:', error)
     });
 
+
+    fetch(finalURL)
+    .then(response => {
+        if (response.status === 404) {
+            populationContainer.innerHTML = "Urban Area does not exist";
+        return;
+      }
+      return response.json();
+    })
+        
+        
+    .then(data => {
+        let crimeData = data.categories.find(category => category.id === "SAFETY")
+        .data.find(data => data.id === "CRIME-RATE-TELESCORE").float_value;
+        let crimeRate = crimeData.filter(data => {
+            if(data.float_value > 0.85) {
+                return "very high crime rate";
+            } else if(data.float_value <= 0.85 && data.float_value >= 0.6) {
+                return "high crime rate";
+            } else if(data.float_value < 0.6 && data.float_value >= 0.38) {
+                return "medium crime rate";
+            } else if(data.float_value < 0.38) {
+                return "low crime rate";
+            }
+        });
+
+        console.log(crimeRate);
+    })
+    .catch(error => {
+        console.error('Error:', error)
+    });
+
 });
