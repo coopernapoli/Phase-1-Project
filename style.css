@@ -54,7 +54,7 @@ html {
 #populationContainer {
     position: absolute;
     bottom: 0; /* positions the element at the bottom of the page */
-    width: 50%; /* gives the element a width of 50% of its parent element */
+    width: 25%; /* gives the element a width of 50% of its parent element */
     left: 25%; /* centers the element horizontally */
     background-color: white;
     padding: 1em;
@@ -63,5 +63,18 @@ html {
     text-align: center;
     font-size: 1em;
   }
+
+#startupSalaryContainer {
+    position: absolute;
+    bottom: 1; /* positions the element at the bottom of the page */
+    width: 25%; /* gives the element a width of 50% of its parent element */
+    left: 25%; /* centers the element horizontally */
+    background-color: white;
+    padding: 1em;
+    border-radius: 0.62em;
+    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+    text-align: center;
+    font-size: 1em;
+}
 
 
