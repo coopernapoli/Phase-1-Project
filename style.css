@@ -1,3 +1,5 @@
+/* Creating a unique background with a gradient to catch the eye immediately upon loading the page.*/
+
 html {
     background-image: linear-gradient(to bottom right,
     purple, purple,
@@ -8,13 +10,14 @@ html {
     width: 100%;
     
 }
-
+/* Basic formatting of the question "Where should I live?" */
 #headerOne {
     text-align: center;
 
     color: black;
 }
-
+/* Created a sleek container with multiple inner-functions working inside the box. Used class notation 
+to ensure the ununique nature of the box kept the more specifc contents in order. */
 .input-container {
     background-color: white;
     width: 80vw;
@@ -27,12 +30,15 @@ html {
     border-radius: 0.62em;
     box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25)
 }
-
+/* Same as above. */
 .search-wrapper {
     display: grid;
     grid-template-columns: 9fr 3fr;
     gap: 1.25em;
 }
+
+/* Child selector to create a more detailed and specific look for the button. */
+
 .search-wrapper button {
     font-size: 1em;
     background-color: purple;
@@ -42,6 +48,8 @@ html {
     border-radius: 1.5em;
 }
 
+/* Creating consistency of theme utilizing the child selector on the input box. */
+
 .search-wrapper input {
     font-size: 1em;
     padding: 0 0.62em;
@@ -50,6 +58,8 @@ html {
     outline: none;
     color: black
 }
+
+/* Using id selector to ensure the specificity of the container is consistent and replicable between outputs. */
 
 #populationContainer {
     position: absolute;
@@ -66,7 +76,7 @@ html {
 
 #startupSalaryContainer {
     position: absolute;
-    bottom: 1; /* positions the element at the bottom of the page */
+    bottom: 1; /* positions the element at the top of the page */
     width: 25%; /* gives the element a width of 50% of its parent element */
     left: 25%; /* centers the element horizontally */
     background-color: white;
