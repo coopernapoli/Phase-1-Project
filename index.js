@@ -1,3 +1,7 @@
+//One fetch request to avoid rate limit issues.
+//Separate functions within one fetch requests that call the function.
+//Use spread operator to copy the object.
+
 //Starting with variable declaration to initialize manipulatable HTML elements.
 
   let searchButton = document.getElementById("search");
@@ -5,15 +9,18 @@
   let populationContainer = document.getElementById("populationContainer");
   let headerTwo = document.getElementById("headerTwo");
   let startupSalaryContainer = document.getElementById("startupSalaryContainer");
+  let crimeRateContainer = document.getElementById("crimeRateContainer")
 
   //Allows the container elements to only display when called by their respective functions, not before.
   populationContainer.style.display = "none";
   startupSalaryContainer.style.display = "none";
+  crimeRateContainer.style.display = "none;"
 
 //Likely will not need to use them, but may need these divisions for styling or informational purposes.
 
   let populationDivision = document.getElementById("populationDivision");
   let startupSalaryDivision = document.getElementById("startupSalaryDivision");
+  let crimeRateDivision = document.getElementById("crimeRateDivision");
 
 //Created the search button event listener. Utilized .toLowerCase() as this was the only way to work with the slug functionality on the API.
 
@@ -87,38 +94,44 @@
       console.error('Error:', error)
     });
 
-//With crime data being difficult to explain numerically, I created arbitrary value windows to return a few conditional returns after filtering over
-// the float value of the crime data.  These numbers may not necessarily be indicative of what actually constitutes the return strings, but for the sake
-// of the exercise, it was done in this manner.
+    crimeRateContainer.innerHTML = "";
+
+//With crime data being difficult to explain numerically, I created arbitrary value windows to return a few conditional returns after iterating over
+// the float value of the crime data.  These numbers may not necessarily be indicative of what actually constitutes the return strings, 
+//but for the sake of the exercise, it was done in this manner. The if else if notation creates the width of the possible returns.
     fetch(finalURL)
     .then(response => {
         if (response.status === 404) {
-            populationContainer.innerHTML = "Urban Area does not exist";
+            crimeRateContainer.innerHTML = "Urban Area does not exist";
         return;
       }
       return response.json();
     })
-        
-        
+
     .then(data => {
         let crimeData = data.categories.find(category => category.id === "SAFETY")
         .data.find(data => data.id === "CRIME-RATE-TELESCORE").float_value;
-        let crimeRate = crimeData.filter(data => {
-            if(data.float_value > 0.85) {
-                return "very high crime rate";
-            } else if(data.float_value <= 0.85 && data.float_value >= 0.6) {
-                return "high crime rate";
-            } else if(data.float_value < 0.6 && data.float_value >= 0.38) {
-                return "medium crime rate";
-            } else if(data.float_value < 0.38) {
-                return "low crime rate";
-            }
-        });
+      let crimeRate;
+      
+      if (crimeData > 0.85) {
+        crimeRate = "Low crime rate.";
+      } else if (crimeData <= 0.85 && crimeData >= 0.6) {
+        crimeRate = "Medium crime rate.";
+      } else if (crimeData < 0.6 && crimeData >= 0.38) {
+        crimeRate = "High crime rate.";
+      } else if (crimeData < 0.38) {
+        crimeRate = "Very high crime rate.";
+      }
 
-        console.log(crimeRate);
-    })
-    .catch(error => {
+      crimeRateContainer.textContent = crimeRate;
+            
+      crimeRateContainer.style.display = "block";
+  
+      console.log(crimeRate);
+  })
+        
+    
+      .catch(error => {
         console.error('Error:', error)
+      });
     });
-
-});
