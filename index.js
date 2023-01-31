@@ -18,7 +18,7 @@ crimeRateContainer.style.display = "none";
 //error requests if needed.
 
 searchButton.addEventListener("click", async () => {
-    let citySlug = cityInput.value.toLowerCase();
+    let citySlug = cityInput.value.toLowerCase().replace(/ /g, "-");;
     let finalURL = `https://api.teleport.org/api/urban_areas/slug:${citySlug}/details`;
 
 //Insures the ability to run multiple searches without stacking populated data.
@@ -35,12 +35,20 @@ searchButton.addEventListener("click", async () => {
       }
   
       const data = await response.json();
+
+//Finds population data and multiplies it by 1,000,000.
+
       let populationData = data.categories.find(category => category.id === "CITY-SIZE")
         .data.find(data => data.id === "POPULATION-SIZE").float_value * 1000000;
-  
+
+  //Finds average salary data.
+
       let startupSalaryData = data.categories.find(category => category.id === "JOB-MARKET")
         .data.find(data => data.id === "STARTUP-SALARIES-DETAIL").currency_dollar_value;
   
+
+//Finds crime rate data and returns the data conditionally based on arbitrary metrics I created.
+
       let crimeData = data.categories.find(category => category.id === "SAFETY")
       .data.find(data => data.id === "CRIME-RATE-TELESCORE").float_value;
       let crimeRate;
@@ -55,13 +63,13 @@ searchButton.addEventListener("click", async () => {
       }
 //Tells us what to populate into the containers based on the data.
 
-      populationContainer.textContent = populationData;
+      populationContainer.textContent = `Population Size: ${populationData.toLocaleString()}`;
       populationContainer.style.display = "block";
   
-      startupSalaryContainer.textContent = startupSalaryData;
+      startupSalaryContainer.textContent = `Average Salary in Native Currency: ${startupSalaryData.toLocaleString()}`;
       startupSalaryContainer.style.display = "block";
   
-      crimeRateContainer.textContent = crimeRate;
+      crimeRateContainer.textContent = `Crime: ${crimeRate}`;
       crimeRateContainer.style.display = "block";
     } catch (error)  {
       console.error('Error:', error)
