@@ -84,6 +84,19 @@ console.log(startupSalaryData);
         console.log(crimeRate)
         console.log(crimeData)
       }
+
+    let climateData = data.categories.filter(category => category.id === 'CLIMATE')
+    .map(climateCategory=> climateCategory.data)[0]
+    console.log('Climate Categories:', climateData)     
+        //               .filter(dataPoint => ['WEATHER-AV-NUMBER-CLEAR-DAYS',
+        //               'WEATHER-AV-NUMBER-RAINY-DAYS','WEATHER-AVERAGE-HIGH',
+        //               'WEATHER-AVERAGE-LOW', 'WEATHER-TYPE'].includes(dataPoint.id));
+        // console.log(data)
+        // console.log(data.categories)
+        // climateData.forEach(climateObject => {
+        //     console.log('Climate Data:', climateObject.value);
+        // });
+    
 //Tells us what to populate into the containers based on the data.
 
       populationContainer.textContent = `Population Size: ${populationData.toLocaleString()}`;
@@ -95,7 +108,7 @@ console.log(startupSalaryData);
       crimeRateContainer.textContent = `Crime: ${crimeRate}`;
       crimeRateContainer.style.display = "block";
 
-      climateDataContainer.textContent = `Climate Data:`;
+      climateDataContainer.textContent = `Climate Data: ${climateData}`;
       climateDataContainer.style.display = "block";
     } catch (error)  {
       console.error('Error:', error)
