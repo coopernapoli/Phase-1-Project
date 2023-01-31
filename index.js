@@ -6,12 +6,14 @@ let populationContainer = document.getElementById("populationContainer");
 let headerTwo = document.getElementById("headerTwo");
 let startupSalaryContainer = document.getElementById("startupSalaryContainer");
 let crimeRateContainer = document.getElementById("crimeRateContainer");
+let climateDataContainer = document.getElementById("climateDataContainer");
 
 //Ensure that the containers do not display while empty on page load.
 
 populationContainer.style.display = "none";
 startupSalaryContainer.style.display = "none";
 crimeRateContainer.style.display = "none";
+climateDataContainer.style.display = "none";
 
 
 //Create the search button listener with asynchronous functionality to allow all of this to run code in the background while making 
@@ -30,6 +32,7 @@ searchButton.addEventListener("click", async () => {
     populationContainer.innerHTML = "";
     startupSalaryContainer.innerHTML = "";
     crimeRateContainer.innerHTML = "";
+    climateDataContainer.innerHTML = "";
 //This allows for all of the functions to run while separately and return independent results, even if one portion returns an error code.
     try {
       const response = await fetch(finalURL);
@@ -44,11 +47,14 @@ searchButton.addEventListener("click", async () => {
 
         crimeRateContainer.textContent = "Urban Area does not exist";
         crimeRateContainer.style.display = "block";
+
+        climateDataContainer.textContent = "Urban Area does not exist";
+        climateDataContainer.style.display = "block";
         return;
       }
-  
+     
       const data = await response.json();
-
+console.log(data)
 //Finds population data and multiplies it by 1,000,000.
 
       let populationData = data.categories.find(category => category.id === "CITY-SIZE")
@@ -88,6 +94,9 @@ console.log(startupSalaryData);
   
       crimeRateContainer.textContent = `Crime: ${crimeRate}`;
       crimeRateContainer.style.display = "block";
+
+      climateDataContainer.textContent = `Climate Data:`;
+      climateDataContainer.style.display = "block";
     } catch (error)  {
       console.error('Error:', error)
     }
