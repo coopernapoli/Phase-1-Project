@@ -87,4 +87,28 @@ to ensure the ununique nature of the box kept the more specifc contents in order
     font-size: 1em;
 }
 
+#crimeRateContainer {
+    position: absolute;
+    top: 25.00%; /* positions the element at the top of the page */
+    width: 25%; /* gives the element a width of 50% of its parent element */
+    left: 25%; /* centers the element horizontally */
+    background-color: white;
+    padding: 1em;
+    border-radius: 0.62em;
+    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+    text-align: center;
+    font-size: 1em;
+}
 
+#climateDataContainer {
+    position: absolute;
+    top: 75.00%; /* positions the element at the top of the page */
+    width: 25%; /* gives the element a width of 50% of its parent element */
+    left: 25%; /* centers the element horizontally */
+    background-color: white;
+    padding: 1em;
+    border-radius: 0.62em;
+    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+    text-align: center;
+    font-size: 1em;
+}
