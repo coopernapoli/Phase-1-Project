@@ -21,6 +21,10 @@ searchButton.addEventListener("click", async () => {
     let citySlug = cityInput.value.toLowerCase().replace(/ /g, "-");;
     let finalURL = `https://api.teleport.org/api/urban_areas/slug:${citySlug}/details`;
 
+    console.log(citySlug);
+
+    console.log(finalURL);
+
 //Insures the ability to run multiple searches without stacking populated data.
 
     populationContainer.innerHTML = "";
@@ -29,8 +33,17 @@ searchButton.addEventListener("click", async () => {
 //This allows for all of the functions to run while separately and return independent results, even if one portion returns an error code.
     try {
       const response = await fetch(finalURL);
+
       if (response.status === 404) {
-        populationContainer.innerHTML = "Urban Area does not exist";
+
+        populationContainer.textContent = "Urban Area does not exist";
+        populationContainer.style.display = "block";
+
+        startupSalaryContainer.textContent = "Urban Area does not exist";
+        startupSalaryContainer.style.display = "block";
+
+        crimeRateContainer.textContent = "Urban Area does not exist";
+        crimeRateContainer.style.display = "block";
         return;
       }
   
@@ -41,12 +54,13 @@ searchButton.addEventListener("click", async () => {
       let populationData = data.categories.find(category => category.id === "CITY-SIZE")
         .data.find(data => data.id === "POPULATION-SIZE").float_value * 1000000;
 
+        console.log(populationData);
   //Finds average salary data.
 
       let startupSalaryData = data.categories.find(category => category.id === "JOB-MARKET")
         .data.find(data => data.id === "STARTUP-SALARIES-DETAIL").currency_dollar_value;
   
-
+console.log(startupSalaryData);
 //Finds crime rate data and returns the data conditionally based on arbitrary metrics I created.
 
       let crimeData = data.categories.find(category => category.id === "SAFETY")
@@ -60,6 +74,9 @@ searchButton.addEventListener("click", async () => {
         crimeRate = "High crime rate.";
       } else if (crimeData < 0.38) {
         crimeRate = "Very high crime rate.";
+
+        console.log(crimeRate)
+        console.log(crimeData)
       }
 //Tells us what to populate into the containers based on the data.
 
