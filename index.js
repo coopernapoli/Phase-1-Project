@@ -100,16 +100,25 @@ console.log(startupSalaryData);
         } else if (climateObject.string_value) {
             value = climateObject.string_value;
         }
-    climateDataArray.push(`Climate Data: ${climateObject.label}: ${value}`); 
+    climateDataArray.push(`${climateObject.label}: ${value}`); 
     });
     
 //Tells us what to populate into the containers based on the data.
 
-      climateDataContainer.innerHTML = climateDataArray.join("<br>");
-      climateDataContainer.style.display = "block";
+      //climateDataContainer.innerHTML = `Climate Data: ${climateDataArray.join("<br>")}`;
+      //climateDataContainer.style.display = "block";
     
 //Tells us what to populate into the containers based on the data.
 
+const climateDataLabel = document.createElement("strong");
+climateDataLabel.textContent = "Climate Data: ";
+climateDataContainer.appendChild(climateDataLabel);
+
+const climateDataValues = document.createElement("span");
+climateDataValues.innerHTML = climateDataArray.join("<br>");
+climateDataContainer.append(climateDataValues);
+
+climateDataContainer.style.display = "block";
 
 const populationLabel = document.createElement("strong");
 populationLabel.textContent = "Population Size: ";
