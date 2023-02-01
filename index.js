@@ -86,16 +86,25 @@ console.log(startupSalaryData);
       }
 
     let climateData = data.categories.filter(category => category.id === 'CLIMATE')
-    .map(climateCategory=> climateCategory.data)[0]
-    console.log('Climate Categories:', climateData)     
-        //               .filter(dataPoint => ['WEATHER-AV-NUMBER-CLEAR-DAYS',
-        //               'WEATHER-AV-NUMBER-RAINY-DAYS','WEATHER-AVERAGE-HIGH',
-        //               'WEATHER-AVERAGE-LOW', 'WEATHER-TYPE'].includes(dataPoint.id));
-        // console.log(data)
-        // console.log(data.categories)
-        // climateData.forEach(climateObject => {
-        //     console.log('Climate Data:', climateObject.value);
-        // });
+    .map(climateCategory=> climateCategory.data)[0].filter(dataPoint =>  ['WEATHER-AV-NUMBER-CLEAR-DAYS',
+    'WEATHER-AV-NUMBER-RAINY-DAYS','WEATHER-AVERAGE-HIGH',
+    'WEATHER-AVERAGE-LOW', 'WEATHER-TYPE'].includes(dataPoint.id))
+
+    let climateDataArray=[];
+    climateData.forEach(climateObject => {
+        let value = '';
+        if (climateObject.float_value) {
+            value = climateObject.float_value;
+        } else if (climateObject.percent_value) {
+            value = climateObject.percent_value;
+        } else if (climateObject.string_value) {
+            value = climateObject.string_value;
+        }
+    climateDataArray.push(`Climate Data: ${climateObject.label}: ${value}`); 
+    });
+    
+    climateDataContainer.innerHTML = climateDataArray.join("<br>");
+    climateDataContainer.style.display = "block";
     
 //Tells us what to populate into the containers based on the data.
 
@@ -108,7 +117,7 @@ console.log(startupSalaryData);
       crimeRateContainer.textContent = `Crime: ${crimeRate}`;
       crimeRateContainer.style.display = "block";
 
-      climateDataContainer.textContent = `Climate Data: ${climateData}`;
+      
       climateDataContainer.style.display = "block";
     } catch (error)  {
       console.error('Error:', error)
