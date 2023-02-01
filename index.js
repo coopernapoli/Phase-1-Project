@@ -103,22 +103,51 @@ console.log(startupSalaryData);
     climateDataArray.push(`Climate Data: ${climateObject.label}: ${value}`); 
     });
     
-    climateDataContainer.innerHTML = climateDataArray.join("<br>");
-    climateDataContainer.style.display = "block";
+//Tells us what to populate into the containers based on the data.
+
+      climateDataContainer.innerHTML = climateDataArray.join("<br>");
+      climateDataContainer.style.display = "block";
     
 //Tells us what to populate into the containers based on the data.
 
-      populationContainer.textContent = `Population Size: ${populationData.toLocaleString()}`;
-      populationContainer.style.display = "block";
+
+const populationLabel = document.createElement("strong");
+populationLabel.textContent = "Population Size: ";
+populationContainer.appendChild(populationLabel);
+      
+const populationValue= document.createElement("span");
+populationValue.textContent = populationData.toLocaleString();
+populationContainer.appendChild(populationValue);
+      
+populationContainer.style.display = "block";
+
+const salaryLabel = document.createElement("strong");
+salaryLabel.textContent = "Average Salary in Native Currency: ";
+startupSalaryContainer.appendChild(salaryLabel);
+
+const salaryValue = document.createElement("span");
+salaryValue.textContent = startupSalaryData.toLocaleString();
+startupSalaryContainer.appendChild(salaryValue);
+
+startupSalaryContainer.style.display = "block";
+
+const crimeLabel = document.createElement("strong");
+crimeLabel.textContent = "Crime: ";
+crimeRateContainer.appendChild(crimeLabel);
+
+const crimeValue = document.createElement("span");
+crimeValue.textContent = crimeRate;
+crimeRateContainer.appendChild(crimeValue);
+
+crimeRateContainer.style.display = "block";
+
+ 
   
-      startupSalaryContainer.textContent = `Average Salary in Native Currency: ${startupSalaryData.toLocaleString()}`;
-      startupSalaryContainer.style.display = "block";
-  
-      crimeRateContainer.textContent = `Crime: ${crimeRate}`;
-      crimeRateContainer.style.display = "block";
+      //crimeRateContainer.textContent = `Crime: ${crimeRate}`;
+      //crimeRateContainer.style.display = "block";
 
       
-      climateDataContainer.style.display = "block";
+    
     } catch (error)  {
       console.error('Error:', error)
     }
