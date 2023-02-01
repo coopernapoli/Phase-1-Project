@@ -1,71 +1,72 @@
-/* Creating a unique background with a gradient to catch the eye immediately upon loading the page.*/
-
 html {
-    background-image: linear-gradient(to bottom right,
-    purple, purple,
-    silver, 
-    black
-    );
+    background-image: linear-gradient(to bottom right, purple, purple, silver, black);
     height: 100%;
     width: 100%;
-    
-}
-/* Basic formatting of the question "Where should I live?" */
-#headerOne {
+  }
+  
+  #headerOne {
     text-align: center;
-
-    color: black;
-}
-/* Created a sleek container with multiple inner-functions working inside the box. Used class notation 
-to ensure the ununique nature of the box kept the more specifc contents in order. */
-.input-container {
+    color: black
+    text-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+  }
+  
+  .input-container {
     background-color: white;
     width: 80vw;
     max-width: 37.5em;
     padding: 3em 2.5em;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 15%;
     left: 50%;
+    margin-top: 2em;
     border-radius: 0.62em;
-    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25)
-}
-/* Same as above. */
-.search-wrapper {
+    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+  }
+  
+  .search-wrapper {
     display: grid;
     grid-template-columns: 9fr 3fr;
     gap: 1.25em;
-}
 
-/* Child selector to create a more detailed and specific look for the button. */
-
-.search-wrapper button {
+  }
+  
+  .search-wrapper button {
     font-size: 1em;
     background-color: purple;
     color: white;
     padding: 0.8em 0;
     border: none;
     border-radius: 1.5em;
-}
-
-/* Creating consistency of theme utilizing the child selector on the input box. */
-
-.search-wrapper input {
+  }
+  
+  .search-wrapper input {
     font-size: 1em;
     padding: 0 0.62em;
     border: none;
     border-bottom: 2px solid purple;
     outline: none;
-    color: black
-}
-
-/* Using id selector to ensure the specificity of the container is consistent and replicable between outputs. */
-
-#populationContainer {
+    color: white;
+  }
+  
+  #populationContainer {
     position: absolute;
-    bottom: 0; /* positions the element at the bottom of the page */
-    width: 25%; /* gives the element a width of 50% of its parent element */
-    left: 25%; /* centers the element horizontally */
+    bottom: 1em;
+    width: 25%;
+    left: 25%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 0.62em;
+    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
+    text-align: center;
+    font-size: 1em;
+  } 
+  
+  #startupSalaryContainer {
+    position: absolute;
+    top: 40%;
+    width: 25%;
+    left: 25%;
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
@@ -74,37 +75,24 @@ to ensure the ununique nature of the box kept the more specifc contents in order
     font-size: 1em;
   }
 
-#startupSalaryContainer {
+  #crimeRateContainer {
     position: absolute;
-    bottom: 1; /* positions the element at the top of the page */
-    width: 25%; /* gives the element a width of 50% of its parent element */
-    left: 25%; /* centers the element horizontally */
+    top: 1em;
+    width: 25%;
+    left: 25%;
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
     box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
     text-align: center;
     font-size: 1em;
-}
+  }
 
-#crimeRateContainer {
+  #climateDataContainer {
     position: absolute;
-    top: 25.00%; /* positions the element at the top of the page */
-    width: 25%; /* gives the element a width of 50% of its parent element */
-    left: 25%; /* centers the element horizontally */
-    background-color: white;
-    padding: 1em;
-    border-radius: 0.62em;
-    box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
-    text-align: center;
-    font-size: 1em;
-}
-
-#climateDataContainer {
-    position: absolute;
-    top: 75.00%; /* positions the element at the top of the page */
-    width: 25%; /* gives the element a width of 50% of its parent element */
-    left: 25%; /* centers the element horizontally */
+    top: 50%; 
+    width: 25%; 
+    right: 25%;
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
