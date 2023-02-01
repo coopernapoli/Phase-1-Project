@@ -57,6 +57,11 @@ searchButton.addEventListener("click", async () => {
 console.log(data)
 //Finds population data and multiplies it by 1,000,000.
 
+const inputContainer = document.querySelector('.input-container');
+
+    inputContainer.style.top = '15%';
+    inputContainer.style.left = '50%';
+
       let populationData = data.categories.find(category => category.id === "CITY-SIZE")
         .data.find(data => data.id === "POPULATION-SIZE").float_value * 1000000;
 
