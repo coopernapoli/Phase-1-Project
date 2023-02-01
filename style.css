@@ -3,12 +3,6 @@ html {
     height: 100%;
     width: 100%;
   }
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
-  }
   
   #headerOne {
     text-align: center;
