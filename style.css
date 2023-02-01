@@ -3,10 +3,16 @@ html {
     height: 100%;
     width: 100%;
   }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+  }
   
   #headerOne {
     text-align: center;
-    color: black
+    color: black;
     text-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
   }
   
@@ -46,7 +52,7 @@ html {
     border: none;
     border-bottom: 2px solid purple;
     outline: none;
-    color: white;
+    color: black;
   }
   
   #populationContainer {
