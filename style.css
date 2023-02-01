@@ -51,9 +51,10 @@ html {
   
   #populationContainer {
     position: absolute;
-    bottom: 1em;
+    bottom: 11em;
     width: 25%;
-    left: 25%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
@@ -64,9 +65,10 @@ html {
   
   #startupSalaryContainer {
     position: absolute;
-    top: 40%;
+    bottom: 6em;
     width: 25%;
-    left: 25%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
@@ -77,22 +79,26 @@ html {
 
   #crimeRateContainer {
     position: absolute;
-    top: 1em;
+    bottom: 1em;
     width: 25%;
-    left: 25%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
     box-shadow: 0 1.25em 1.8em rgba(8,21,65,0.25);
     text-align: center;
     font-size: 1em;
+   
   }
 
   #climateDataContainer {
     position: absolute;
     top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 25%; 
-    right: 25%;
+    right: center;
     background-color: white;
     padding: 1em;
     border-radius: 0.62em;
