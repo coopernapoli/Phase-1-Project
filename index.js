@@ -15,6 +15,13 @@ startupSalaryContainer.style.display = "none";
 crimeRateContainer.style.display = "none";
 climateDataContainer.style.display = "none";
 
+//Keyup functions for the search function.
+
+cityInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') 
+})
+    
+
 //Mouseover functions for each container.
 
 populationContainer.addEventListener("mouseover", function(){
