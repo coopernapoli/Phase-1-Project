@@ -97,8 +97,30 @@ startupSalaryContainer.addEventListener("mouseover", function() {
         });
 
   climateDataContainer.addEventListener("mouseover", function() {
-    // Your code for displaying a popup explaining the data in the "climateDataContainer" goes here.
+    // Create a new div to hold the additional data for the popup.
+    let climatePopUp = document.createElement("div");
+  
+    // Set the content of the div
+    climatePopUp.innerHTML = "Depending on the urban area, some data may not be available.  If fully up to date, it will have rainy and clear day data, temperature highs and lows, and weather type. If not available, a google search should fill in some of the missing data with relative ease.";
+ 
+    // Style the div
+    climatePopUp.style.backgroundColor = "black";
+    climatePopUp.style.color = "white";
+    climatePopUp.style.padding = "1em";
+    climatePopUp.style.borderRadius = "0.62em";
+    climatePopUp.style.width = "100%"
+    climatePopUp.style.position = "absolute";
+    climatePopUp.style.left = "100%";
+    climatePopUp.style.top = "0";
+    climatePopUp.style.marginLeft = "1em";
+
+    climateDataContainer.appendChild(climatePopUp);
   });
+
+  climateDataContainer.addEventListener("mouseout", function(){
+    const climatePopUp = climateDataContainer.querySelector("div");
+    climateDataContainer.removeChild(climatePopUp);
+    });
 
 
 //Create the search button listener with asynchronous functionality to allow all of this to run code in the background while making 
