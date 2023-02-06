@@ -48,6 +48,19 @@ html {
     outline: none;
     color: black;
   }
+
+
+  .popup-card{
+    background-color: black;
+    color: white;
+    padding: 1em;
+    border-radius: 0.62em;
+    width: 100%;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 1em;
+  }
   
   #populationContainer {
     position: absolute;
