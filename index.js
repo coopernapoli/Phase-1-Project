@@ -19,33 +19,27 @@ climateDataContainer.style.display = "none";
 
 cityInput.addEventListener('keypress', function(event) {
     if (event.key === 'Enter')  {
-        searchButton.click();
+        searchButton.click(); //Accesses the click listener to run the same code as when pressing search.
     }
 });
     
+function popupCreator(text) {
+    const popup = document.createElement("div");
+    popup.classList.add("popup-card");
 
+    popup.innerHTML = text;
+
+    return popup;
+}
 //Mouseover functions for each container.
 
+    // Styling for each container.
+
 populationContainer.addEventListener("mouseover", function(){
-    // Create a new div to hold the additional data for the popup.
-    let populationPopUp = document.createElement("div");
-  
-    // Set the content of the div
-    populationPopUp.innerHTML = "Population data based off urban area data, not city data.";
- 
-    // Style the div
-    populationPopUp.style.backgroundColor = "black";
-    populationPopUp.style.color = "white";
-    populationPopUp.style.padding = "1em";
-    populationPopUp.style.borderRadius = "0.62em";
-    populationPopUp.style.width = "100%"
-    populationPopUp.style.position = "absolute";
-    populationPopUp.style.left = "100%";
-    populationPopUp.style.top = "0";
-    populationPopUp.style.marginLeft = "1em";
-    
-    // Append the div to the populationContainer
-    populationContainer.appendChild(populationPopUp);
+
+    const popup = popupCreator("Population data based off urban area data, not city data.")
+
+        populationContainer.appendChild(popup);
     });
     //Mouseout function for the above mouseover.
     populationContainer.addEventListener("mouseout", function(){
@@ -55,23 +49,9 @@ populationContainer.addEventListener("mouseover", function(){
   
 startupSalaryContainer.addEventListener("mouseover", function() {
     // Create a new div to hold the additional data for the popup.
-    let salaryPopUp = document.createElement("div");
-  
-    // Set the content of the div
-    salaryPopUp.innerHTML = "Ex: Los Angeles = USD; London = GBP";
-   
-    // Style the div
-    salaryPopUp.style.backgroundColor = "black";
-    salaryPopUp.style.color = "white";
-    salaryPopUp.style.padding = "1em";
-    salaryPopUp.style.borderRadius = "0.62em";
-    salaryPopUp.style.width = "100%"
-    salaryPopUp.style.position = "absolute";
-    salaryPopUp.style.left = "100%";
-    salaryPopUp.style.top = "0";
-    salaryPopUp.style.marginLeft = "1em";
+    const popup = popupCreator("Ex: Los Angeles = USD; London = GBP");
 
-    startupSalaryContainer.appendChild(salaryPopUp);
+        startupSalaryContainer.appendChild(popup);
   });
   
     startupSalaryContainer.addEventListener("mouseout", function(){
@@ -81,23 +61,8 @@ startupSalaryContainer.addEventListener("mouseover", function() {
 
   crimeRateContainer.addEventListener("mouseover", function() {
      // Create a new div to hold the additional data for the popup.
-     let crimeRatePopUp = document.createElement("div");
-  
-     // Set the content of the div
-     crimeRatePopUp.innerHTML = "Data not accurate, ranges simply used for coding process.";
-  
-     // Style the div
-     crimeRatePopUp.style.backgroundColor = "black";
-     crimeRatePopUp.style.color = "white";
-     crimeRatePopUp.style.padding = "1em";
-     crimeRatePopUp.style.borderRadius = "0.62em";
-     crimeRatePopUp.style.width = "100%"
-     crimeRatePopUp.style.position = "absolute";
-     crimeRatePopUp.style.left = "100%";
-     crimeRatePopUp.style.top = "0";
-     crimeRatePopUp.style.marginLeft = "1em";
-
-     crimeRateContainer.appendChild(crimeRatePopUp);
+        const popup = popupCreator("Data created based off of arbitrary values for sake of practicing certain style of coding.")
+     crimeRateContainer.appendChild(popup);
   });
   
     crimeRateContainer.addEventListener("mouseout", function(){
@@ -107,23 +72,9 @@ startupSalaryContainer.addEventListener("mouseover", function() {
 
   climateDataContainer.addEventListener("mouseover", function() {
     // Create a new div to hold the additional data for the popup.
-    let climatePopUp = document.createElement("div");
+    const popup = popupCreator("Depending on the urban area, some data may not be available.  If fully up to date, it will have rainy and clear day data, temperature highs and lows, and weather type. If not available, a google search should fill in some of the missing data with relative ease.")
   
-    // Set the content of the div
-    climatePopUp.innerHTML = "Depending on the urban area, some data may not be available.  If fully up to date, it will have rainy and clear day data, temperature highs and lows, and weather type. If not available, a google search should fill in some of the missing data with relative ease.";
- 
-    // Style the div
-    climatePopUp.style.backgroundColor = "black";
-    climatePopUp.style.color = "white";
-    climatePopUp.style.padding = "1em";
-    climatePopUp.style.borderRadius = "0.62em";
-    climatePopUp.style.width = "100%"
-    climatePopUp.style.position = "absolute";
-    climatePopUp.style.left = "100%";
-    climatePopUp.style.top = "0";
-    climatePopUp.style.marginLeft = "1em";
-
-    climateDataContainer.appendChild(climatePopUp);
+    climateDataContainer.appendChild(popup);
   });
 
   climateDataContainer.addEventListener("mouseout", function(){
@@ -135,9 +86,9 @@ startupSalaryContainer.addEventListener("mouseover", function() {
 //Create the search button listener with asynchronous functionality to allow all of this to run code in the background while making 
 //error requests if needed.
 
-searchButton.addEventListener("click", async () => {
-    let citySlug = cityInput.value.toLowerCase().replace(/ /g, "-");;
-    let finalURL = `https://api.teleport.org/api/urban_areas/slug:${citySlug}/details`;
+searchButton.addEventListener("click", async () => { 
+    let citySlug = cityInput.value.toLowerCase().replace(/ /g, "-");// Creates the necessary conditions to align with slug values.
+    let finalURL = `https://api.teleport.org/api/urban_areas/slug:${citySlug}/details`; // Creates area-specific end-point.
 
     console.log(citySlug);
 
@@ -151,7 +102,7 @@ searchButton.addEventListener("click", async () => {
     climateDataContainer.innerHTML = "";
 //This allows for all of the functions to run while separately and return independent results, even if one portion returns an error code.
 try {
-      const response = await fetch(finalURL);
+      const response = await fetch(finalURL); //pauses other functions from running until a successful citySlug is called.
 
       if (response.status === 404) {
 
@@ -166,7 +117,7 @@ try {
 
         climateDataContainer.textContent = "Urban Area does not exist";
         climateDataContainer.style.display = "block";
-        return;
+        return;  // Creating an error condition that will show if the urban area searched does not exist.
       }
      
       const data = await response.json();
@@ -179,13 +130,13 @@ try {
         inputContainer.style.left = '50%';
 
         let populationData = data.categories.find(category => category.id === "CITY-SIZE")
-            .data.find(data => data.id === "POPULATION-SIZE").float_value * 1000000;
+            .data.find(data => data.id === "POPULATION-SIZE").float_value * 1000000; //Float value can be multiplied to create the desired number.
 
         console.log(populationData);
-  //Finds average salary data.
+//Finds average salary data.
 
         let startupSalaryData = data.categories.find(category => category.id === "JOB-MARKET")
-            .data.find(data => data.id === "STARTUP-SALARIES-DETAIL").currency_dollar_value;
+            .data.find(data => data.id === "STARTUP-SALARIES-DETAIL").currency_dollar_value; //Simple access of API data.
   
 console.log(startupSalaryData);
 //Finds crime rate data and returns the data conditionally based on arbitrary metrics I created.
@@ -200,17 +151,17 @@ console.log(startupSalaryData);
          } else if (crimeData < 0.6 && crimeData >= 0.38) {
           crimeRate = "High crime rate.";
          } else if (crimeData < 0.38) {
-         crimeRate = "Very high crime rate.";
+         crimeRate = "Very high crime rate."; // If else if allows for a variety of possible conditions to be met.
 
         console.log(crimeRate)
         console.log(crimeData)
       }
 
-        let climateData = data.categories.filter(category => category.id === 'CLIMATE')
+        let climateData = data.categories.filter(category => category.id === 'CLIMATE') //Filters through up to 22 possible categories for the climate data.
     .map(climateCategory=> climateCategory.data)[0].filter(dataPoint =>  ['WEATHER-AV-NUMBER-CLEAR-DAYS',
     'WEATHER-AV-NUMBER-RAINY-DAYS','WEATHER-AVERAGE-HIGH',
-    'WEATHER-AVERAGE-LOW', 'WEATHER-TYPE'].includes(dataPoint.id))
-
+    'WEATHER-AVERAGE-LOW', 'WEATHER-TYPE'].includes(dataPoint.id)) //Maps over the data within the CLIMATE category's individual data points to return data in an array based on the filter of the category ID titles.
+console.log(climateData)
         let climateDataArray=[];
         climateData.forEach(climateObject => {
             let value = '';
@@ -221,7 +172,7 @@ console.log(startupSalaryData);
             } else if (climateObject.string_value) {
                 value = climateObject.string_value;
             }
-            climateDataArray.push(`${climateObject.label}: ${value}`); 
+            climateDataArray.push(`${climateObject.label}: ${value}`); //Based on the if else if statement loops, the data will be pushed into the empty array and displayed in a coherent manner for users.
     });
     
 
@@ -230,12 +181,12 @@ console.log(startupSalaryData);
     
 //Tells us what to populate into the containers based on the data.
 
-    const climateDataLabel = document.createElement("strong");
+    const climateDataLabel = document.createElement("strong"); //Bolds the title element.
     climateDataLabel.textContent = "Climate Data: ";
     climateDataContainer.appendChild(climateDataLabel);
 
-    const climateDataValues = document.createElement("span");
-    climateDataValues.innerHTML = climateDataArray.join("<br>");
+    const climateDataValues = document.createElement("span"); //More dynammically show off the contents.
+    climateDataValues.innerHTML = climateDataArray.join("<br>"); //Using .join() to joint all the elements inside the array as a string.
     climateDataContainer.append(climateDataValues);
 
     climateDataContainer.style.display = "block";
@@ -245,7 +196,7 @@ console.log(startupSalaryData);
     populationContainer.appendChild(populationLabel);
         
     const populationValue= document.createElement("span");
-    populationValue.textContent = populationData.toLocaleString();
+    populationValue.textContent = populationData.toLocaleString(); //.toLocaleString() allows for better presentation of data.
     populationContainer.appendChild(populationValue);
         
     populationContainer.style.display = "block";
@@ -255,7 +206,7 @@ console.log(startupSalaryData);
     startupSalaryContainer.appendChild(salaryLabel);
 
     const salaryValue = document.createElement("span");
-    salaryValue.textContent = startupSalaryData.toLocaleString();
+    salaryValue.textContent = startupSalaryData.toLocaleString(); //Same use case as population container.
     startupSalaryContainer.appendChild(salaryValue);
 
     startupSalaryContainer.style.display = "block";
